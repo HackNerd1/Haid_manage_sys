@@ -4,7 +4,7 @@
  * @Author: Hansel
  * @Date: 2021-01-24 13:19:14
  * @LastEditors: Hansel
- * @LastEditTime: 2021-01-24 13:33:34
+ * @LastEditTime: 2021-01-30 15:29:00
  */
 const user = {
     state : {
@@ -13,7 +13,8 @@ const user = {
             userName: '',
 
         },
-        access_token : ''
+        access_token : '',
+        
     },
     getters: {
         access_token: state => state.userProfile,

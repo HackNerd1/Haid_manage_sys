@@ -4,11 +4,12 @@
             class="sidebar-el-menu"
             :default-active="onRoutes"
             :collapse="collapse"
-            background-color="#324157"
-            text-color="#bfcbd9"
-            active-text-color="#20a0ff"
+            background-color="#FFFFFF"
+            text-color="black"
+            active-text-color="#3372FF"
             unique-opened
             router
+            collapse-transition
         >
             <template v-for="item in items">
                 <template v-if="item.subs">
@@ -111,15 +112,19 @@ export default {
     display: block;
     position: absolute;
     left: 0;
-    top: 70px;
+    top: 60px;
     bottom: 0;
     overflow-y: scroll;
+    font-size: 14px;
+}
+.sidebar ul li.el-menu-item.is-active{
+    font-weight: 600;
 }
 .sidebar::-webkit-scrollbar {
     width: 0;
 }
 .sidebar-el-menu:not(.el-menu--collapse) {
-    width: 250px;
+    width: 228px;
 }
 .sidebar > ul {
     height: 100%;

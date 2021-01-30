@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { login } from "@/api/user.js"
 export default {
     data: function() {
         return {
@@ -44,9 +45,11 @@ export default {
     methods: {
         submitForm() {
             this.$refs.login.validate(valid => {
+                // TODO 迁移至响应拦截
                 if (valid) {
                     this.$message.success('登录成功');
                     localStorage.setItem('ms_username', this.param.username);
+                    // TODO login()
                     this.$router.push('/');
                 } else {
                     this.$message.error('请输入账号和密码');

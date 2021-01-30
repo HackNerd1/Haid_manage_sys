@@ -1,11 +1,13 @@
 <template>
     <div class="header">
-        <!-- 折叠按钮 -->
-        <div class="collapse-btn" @click="collapseChage">
-            <i v-if="!collapse" class="el-icon-s-fold"></i>
-            <i v-else class="el-icon-s-unfold"></i>
+        <div class="logo">
+            <!-- 折叠按钮 -->
+            <div class="collapse-btn" @click="collapseChage">
+                <i v-if="!collapse" class="el-icon-s-fold"></i>
+                <i v-else class="el-icon-s-unfold"></i>
+            </div>
+            <span style="font-size: 14px; font-weight: 600;">后台管理系统</span>
         </div>
-        <div class="logo">后台管理系统</div>
         <div class="header-right">
             <div class="header-user-con">
                 <!-- 全屏显示 -->
@@ -38,7 +40,7 @@
                         <i class="el-icon-caret-bottom"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                        <a href="https://github.com/lin-xin/vue-manage-system" target="_blank">
+                        <a href="https://gitee.com/Genm_1/tms-manager-web.git" target="_blank">
                             <el-dropdown-item>项目仓库</el-dropdown-item>
                         </a>
                         <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
@@ -50,10 +52,11 @@
 </template>
 <script>
 import bus from '../common/bus';
+import { logout } from "@/api/user.js"
 export default {
     data() {
         return {
-            collapse: false,
+            collapse: true,
             fullscreen: false,
             name: 'linxin',
             message: 2
@@ -69,6 +72,7 @@ export default {
         // 用户名下拉菜单选择事件
         handleCommand(command) {
             if (command == 'loginout') {
+                // TODO logout()
                 localStorage.removeItem('ms_username');
                 this.$router.push('/login');
             }
@@ -115,23 +119,37 @@ export default {
 </script>
 <style scoped>
 .header {
-    position: relative;
+    /* position: relative;
     box-sizing: border-box;
     width: 100%;
-    height: 70px;
-    font-size: 22px;
+    height: 70px; */
+    /* font-size: 22px; */
     color: #fff;
+    display: flex;
+    position: relative;
+    z-index: 100;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 0 60px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 0;
+    height: 60px;
+    background-color: #3c4a73;
+    min-width: 1024px;
+    box-shadow: 0 4px 8px rgb(31 35 41 / 10%);
 }
 .collapse-btn {
     float: left;
-    padding: 0 21px;
+    padding: 0 20px;
     cursor: pointer;
-    line-height: 70px;
+    line-height: 60px;
 }
 .header .logo {
     float: left;
     width: 250px;
-    line-height: 70px;
+    line-height: 60px;
 }
 .header-right {
     float: right;
