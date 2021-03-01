@@ -4,7 +4,7 @@
  * @Author: Hansel
  * @Date: 2021-01-23 19:20:22
  * @LastEditors: Hansel
- * @LastEditTime: 2021-01-25 10:12:27
+ * @LastEditTime: 2021-03-01 16:17:51
  */
 import Vue from 'vue';
 import App from '@/App.vue';
@@ -17,9 +17,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '@/assets/css/icon.css';
 import '@/components/common/directives';
 import 'babel-polyfill';
+import Avue from '@smallwei/avue';
+import '@smallwei/avue/lib/index.css';
 
 Vue.config.productionTip = false;
 Vue.use(VueI18n);
+Vue.use(Avue);
 Vue.use(ElementUI, {
     size: 'small'
 });

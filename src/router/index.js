@@ -4,7 +4,7 @@
  * @Author: Hansel
  * @Date: 2021-01-23 19:20:22
  * @LastEditors: Hansel
- * @LastEditTime: 2021-01-25 10:03:48
+ * @LastEditTime: 2021-03-01 13:55:08
  */
 import Vue from 'vue';
 import Router from 'vue-router';
@@ -26,6 +26,11 @@ export default new Router({
                     path: '/dashboard',
                     component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
                     meta: { title: '系统首页' }
+                },
+                {
+                    path: '/contact',
+                    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/organization/contact/index.vue'),
+                    meta: { title: '通讯录设置' }
                 },
                 {
                     path: '/table',
