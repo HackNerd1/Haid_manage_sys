@@ -4,7 +4,7 @@
  * @Author: Hansel
  * @Date: 2021-03-01 13:56:29
  * @LastEditors: Hansel
- * @LastEditTime: 2021-03-01 16:52:00
+ * @LastEditTime: 2021-03-02 13:48:12
 -->
 <template>
     <div>
@@ -29,7 +29,7 @@
                 <el-table-column label="可见范围">
                     <template slot-scope="scope">￥{{scope.row.money}}</template>
                 </el-table-column>
-                <el-table-column v-if="isEdit" width="55" label="操作">
+                <el-table-column v-if="isEdit" width="55www" label="操作">
                     <template slot-scope="scope">
                         <el-button
                             type="text"
@@ -58,7 +58,7 @@ export default {
         return{
             isEdit: false,
             tableData: [],
-            tableOption: option,            
+            tableOption: option,
             items: [
                 {
                     value: '可见所有人',
