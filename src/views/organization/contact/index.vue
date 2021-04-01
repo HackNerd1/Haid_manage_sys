@@ -17,28 +17,46 @@
     </el-tabs>
 </template>
 <script>
-import phone from "@/views/organization/contact/phone.vue"
-import visibility from "@/views/organization/contact/visibility.vue"
+import phone from '@/views/organization/contact/phone.vue';
+import visibility from '@/views/organization/contact/visibility.vue';
 export default {
     name: 'tms-contact',
-    components:{
+    components: {
         phone,
         visibility
     },
-    props:{},
-    data(){
-        return{
-            activeName:'visibility',
-        }
+    props: {},
+    data() {
+        return {
+            activeName: 'visibility'
+        };
     },
-    methods:{
-        handleCilck(tab, event) {
-        }
+    methods: {
+        handleCilck(tab, event) {}
     },
-    computed:{},
-    created(){}
-}
+    computed: {},
+    created() {}
+};
 </script>
-<style>
-
+<style lang="scss" scoped>
+/deep/ .content,
+.container {
+    padding: 0;
+}
+/deep/ .el-tabs__nav-scroll {
+    padding-left: 25px;
+    height: 48px;
+    .el-tabs__active-bar {
+        background-color: #3370ff;
+    }
+    .el-tabs__item {
+        height: 48px;
+        font-size: 16px;
+        line-height: 48px;
+        &.is-active,
+        &:hover {
+            color: #3370ff;
+        }
+    }
+}
 </style>
