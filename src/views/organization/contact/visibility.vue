@@ -73,7 +73,6 @@ export default {
         },
         handleCancel() {
             this.isEdit = false;
-            // TODO清空内容
         },
         handleSelect(row) {
             this.$notify({
@@ -89,44 +88,5 @@ export default {
 };
 </script>
 <style  lang="scss" scoped>
-.visiable {
-    &.visiable-card {
-        padding: 20px 44px 24px;
-    }
-    &.label {
-        position: relative;
-        height: 16px;
-        line-height: 16px;
-        font-size: 16px;
-        font-weight: 500;
-        color: #18263c;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            margin: auto;
-            left: -20px;
-            border-left: 4px solid #3370ff;
-            height: 16px;
-        }
-    }
-
-    &.explain {
-        font-size: 14px;
-        font-weight: 400;
-        color: #646a73;
-        margin-top: 4px;
-    }
-
-    .visiable-flexbox {
-        display: flex;
-
-        &.g-flexbox,
-        .visiable-content-header {
-            flex: 1;
-        }
-    }
-}
+@import '@/assets/scss/organization/contact/index.scss';
 </style>
