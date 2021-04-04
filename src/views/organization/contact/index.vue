@@ -1,0 +1,62 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Hansel
+ * @Date: 2021-03-01 13:19:17
+ * @LastEditors: Hansel
+ * @LastEditTime: 2021-03-01 15:31:24
+-->
+<template>
+    <el-tabs class="container" v-model="activeName" @tab-click="handleCilck">
+        <el-tab-pane label="可见性设置" name="visibility">
+            <visibility></visibility>
+        </el-tab-pane>
+        <el-tab-pane label="查看手机号设置" name="phone">
+            <phone></phone>
+        </el-tab-pane>
+    </el-tabs>
+</template>
+<script>
+import phone from '@/views/organization/contact/phone.vue';
+import visibility from '@/views/organization/contact/visibility.vue';
+export default {
+    name: 'tms-contact',
+    components: {
+        phone,
+        visibility
+    },
+    props: {},
+    data() {
+        return {
+            activeName: 'visibility'
+        };
+    },
+    methods: {
+        handleCilck(tab, event) {}
+    },
+    computed: {},
+    created() {}
+};
+</script>
+<style lang="scss" scoped>
+/deep/ .content,
+.container {
+    padding: 0;
+}
+/deep/ .el-tabs__nav-scroll {
+    padding-left: 25px;
+    height: 48px;
+    .el-tabs__active-bar {
+        background-color: #3370ff;
+    }
+    .el-tabs__item {
+        height: 48px;
+        font-size: 16px;
+        line-height: 48px;
+        &.is-active,
+        &:hover {
+            color: #3370ff;
+        }
+    }
+}
+</style>
