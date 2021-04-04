@@ -39,24 +39,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-/deep/ .content,
-.container {
-    padding: 0;
-}
-/deep/ .el-tabs__nav-scroll {
-    padding-left: 25px;
-    height: 48px;
-    .el-tabs__active-bar {
-        background-color: #3370ff;
-    }
-    .el-tabs__item {
-        height: 48px;
-        font-size: 16px;
-        line-height: 48px;
-        &.is-active,
-        &:hover {
-            color: #3370ff;
-        }
-    }
-}
+@import '@/components/common/base/tabs.scss';
 </style>

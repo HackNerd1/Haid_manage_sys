@@ -19,6 +19,7 @@ import '@/components/common/directives';
 import 'babel-polyfill';
 import Avue from '@smallwei/avue';
 import '@smallwei/avue/lib/index.css';
+import '@/components/common/base/content.scss'
 
 Vue.config.productionTip = false;
 Vue.use(VueI18n);
