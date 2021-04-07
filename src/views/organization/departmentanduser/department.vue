@@ -1,15 +1,15 @@
 <template>
-    <div class="tms-content">
+    <div>
         <div class="department-container">
-            <div class="department-aside">
-                <div v-if="!collapsed">
-                    <el-input
-                        v-model="search"
-                        :fetch-suggestions="querySearchAsync"
-                        prefix-icon="el-icon-search"
-                        placeholder="搜索成员和部门"
-                    ></el-input>
-                </div>
+            <div class="department-aside" v-if="!collapsed">
+                <el-input
+                    size="mini"
+                    v-model="search"
+                    :fetch-suggestions="querySearchAsync"
+                    prefix-icon="el-icon-search"
+                    placeholder="搜索成员和部门"
+                ></el-input>
+                <tree-menu :data="menuData"></tree-menu>
             </div>
             <div class="department-main">
                 <button class="department-collapse-btn" :class="{ collapse: collapsed }" @click="onCollapse">
@@ -43,10 +43,18 @@
                     <div>
                         <el-button type="primary" size="mini" icon="el-icon-plus">添加成员</el-button>
                         <el-button size="mini">批量导入/导出</el-button>
-                        <el-button size="mini">变更部门</el-button>
-                        <el-button size="mini" type="danger" plain>离职操作</el-button>
+                        <el-button size="mini" :disabled="!selectedItem.length > 0">变更部门</el-button>
+                        <el-button size="mini" :disabled="!selectedItem.length > 0" type="danger" plain>离职操作</el-button>
                     </div>
                 </div>
+                <avue-crud
+                    class="tms-table"
+                    :option="tableOption"
+                    :data="tableData"
+                    @selection-change="onSelect"
+                    @on-load="fetchPage"
+                    :table-loading="loading"
+                ></avue-crud>
                 <div class="department-table-footer tms-space-between">
                     <div class="department-footer-descrip">
                         <el-switch v-model="switchVal"></el-switch>
@@ -62,19 +70,17 @@
 </template>
 
 <script>
+import { option } from '@/const/organization/departmentanduser/index.js';
+import treeMenu from '@/components/common/treeMenu/index.vue';
 export default {
     name: 'departmentanduser-department',
+    components: { treeMenu },
     data() {
         return {
-            collapsed: true,
-            search: '',
-            switchVal: false,
-            departmentName: 'departmentName',
             accountState: {
                 label: '全部',
                 value: '选项1'
             },
-            userCount: 1,
             accountOptions: [
                 {
                     value: '选项1',
@@ -92,10 +98,35 @@ export default {
                     value: '选项4',
                     label: '已暂停'
                 }
-            ]
+            ],
+            collapsed: true,
+            departmentName: 'departmentName',
+            tableOption: option,
+            tableData: [],
+            loading: false,
+            selectedItem: [],
+            search: '',
+            switchVal: false,
+            menuData: [],
+            userCount: 1
         };
     },
+    created() {
+        this.menuData = [
+            {
+                name: 'test1',
+                avatarUrl: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
+            }
+        ];
+    },
     methods: {
+        fetchPage() {
+            this.tableData = [
+                {
+                    name: 'test'
+                }
+            ];
+        },
         onCollapse() {
             this.collapsed = !this.collapsed;
         },
@@ -106,6 +137,9 @@ export default {
                 label: label,
                 value: value
             };
+        },
+        onSelect(row) {
+            this.selectedItem = row;
         }
     }
 };
@@ -115,9 +149,12 @@ export default {
 .tms-content {
     height: 100%;
 }
+.el-card__body {
+    padding: 0;
+}
 .department-container {
     display: flex;
-
+    height: 100%;
     .department-collapse-btn {
         position: absolute;
         top: 22px;
@@ -139,7 +176,9 @@ export default {
 
     .department-aside {
         transition-delay: 0.3s;
+        padding: 0 16px 0 16px;
         height: 100%;
+        min-width: 160px;
     }
     .department-main {
         border-left: 1px solid black;

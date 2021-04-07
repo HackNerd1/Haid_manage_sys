@@ -28,4 +28,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/components/common/base/tabs.scss';
+.container,
+.content {
+    height: 100%;
+}
 </style>
