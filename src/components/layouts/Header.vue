@@ -6,23 +6,19 @@
                 <i v-if="!collapse" class="el-icon-s-fold"></i>
                 <i v-else class="el-icon-s-unfold"></i>
             </div>
-            <span style="font-size: 14px; font-weight: 600;">后台管理系统</span>
+            <span>TMS后台管理系统</span>
         </div>
         <div class="header-right">
             <div class="header-user-con">
                 <!-- 全屏显示 -->
                 <div class="btn-fullscreen" @click="handleFullScreen">
-                    <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
+                    <el-tooltip effect="dark" :content="fullscreen ? `取消全屏` : `全屏`" placement="bottom">
                         <i class="el-icon-rank"></i>
                     </el-tooltip>
                 </div>
                 <!-- 消息中心 -->
                 <div class="btn-bell">
-                    <el-tooltip
-                        effect="dark"
-                        :content="message?`有${message}条未读消息`:`消息中心`"
-                        placement="bottom"
-                    >
+                    <el-tooltip effect="dark" :content="message ? `有${message}条未读消息` : `消息中心`" placement="bottom">
                         <router-link to="/tabs">
                             <i class="el-icon-bell"></i>
                         </router-link>
@@ -36,7 +32,7 @@
                 <!-- 用户名下拉菜单 -->
                 <el-dropdown class="user-name" trigger="click" @command="handleCommand">
                     <span class="el-dropdown-link">
-                        {{username}}
+                        {{ username }}
                         <i class="el-icon-caret-bottom"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
@@ -52,7 +48,7 @@
 </template>
 <script>
 import bus from '../common/bus';
-import { logout } from "@/api/user.js"
+import { logout } from '@/api/user.js';
 export default {
     data() {
         return {
@@ -117,7 +113,7 @@ export default {
     }
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .header {
     /* position: relative;
     box-sizing: border-box;
@@ -135,10 +131,10 @@ export default {
     box-sizing: border-box;
     padding-left: 10px;
     padding-right: 0;
-    height: 60px;
+    height: 48px;
     background-color: #3c4a73;
     min-width: 1024px;
-    box-shadow: 0 4px 8px rgb(31 35 41 / 10%);
+    // box-shadow: 0 4px 8px rgb(31 35 41 / 10%);
 }
 .collapse-btn {
     float: left;
@@ -150,6 +146,11 @@ export default {
     float: left;
     width: 250px;
     line-height: 60px;
+
+    span {
+        font-size: 13px;
+        font-weight: 600;
+    }
 }
 .header-right {
     float: right;

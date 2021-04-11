@@ -1,8 +1,12 @@
 <template>
-    <div>
+    <div class="tms-tree-menu">
         <template v-for="(item, index) in data">
-            <div :key="index" class="tms-space-between">
-                <div><el-avatar shape="square" :size="20" :src="item.avatarUrl"></el-avatar>{{ item.name }}</div>
+            <div :key="index" class="tms-space-between tree-menu-item">
+                <div class="tms-tree-item label">
+                    <!-- <el-avatar shape="square" :size="20" :src="item.avatarUrl"></el-avatar> -->
+                    <img :src="item.avatarUrl" alt="头像" />
+                    {{ item.name }}
+                </div>
                 <div>
                     <el-dropdown>
                         <i class="el-icon-more"></i>

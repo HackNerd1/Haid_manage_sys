@@ -10,6 +10,10 @@
                     placeholder="搜索成员和部门"
                 ></el-input>
                 <tree-menu :data="menuData"></tree-menu>
+                <div class="department-aside-buttons">
+                    <el-button size="mini" icon="el-icon-plus">新建部门</el-button>
+                    <el-button size="mini" icon="el-icon-user">管理部门</el-button>
+                </div>
             </div>
             <div class="department-main">
                 <button class="department-collapse-btn" :class="{ collapse: collapsed }" @click="onCollapse">
@@ -178,7 +182,11 @@ export default {
         transition-delay: 0.3s;
         padding: 0 16px 0 16px;
         height: 100%;
-        min-width: 160px;
+        min-width: 200px;
+
+        .department-aside-buttons {
+            display: flex;
+        }
     }
     .department-main {
         border-left: 1px solid black;

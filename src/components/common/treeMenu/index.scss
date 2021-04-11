@@ -1,0 +1,21 @@
+.tms-tree-menu {
+    margin-top: 10px;
+
+    .tree-menu-item {
+        height: 30px;
+
+        &.label {
+            line-height: 30px;
+            height: 30px;
+        }
+
+        img {
+            vertical-align: middle;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 12px;
+        }
+    }
+
+}
