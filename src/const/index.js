@@ -20,6 +20,10 @@ export const menu = [
         {
             index: 'contact',
             title: '通讯录设置'
+        },
+        {
+            index: 'departmentanduser',
+            title: '成员与部门'
         }
       ]
     },
