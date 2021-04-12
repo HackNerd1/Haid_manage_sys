@@ -28,6 +28,11 @@ export default new Router({
                     meta: { title: '系统首页' }
                 },
                 {
+                    path: '/departmentanduser',
+                    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/organization/departmentanduser/index.vue'),
+                    meta: { title: '成员与部门' }
+                },
+                {
                     path: '/contact',
                     component: () => import(/* webpackChunkName: "dashboard" */ '@/views/organization/contact/index.vue'),
                     meta: { title: '通讯录设置' }
