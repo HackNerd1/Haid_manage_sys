@@ -3,17 +3,28 @@
 
     .tree-menu-item {
         height: 30px;
+        font-size: 12px;
+        line-height: 30px;
 
         &.label {
             line-height: 30px;
             height: 30px;
         }
 
+        &.children {
+            padding-left: 25px;
+        }
+
+        &.activated {
+            color: rgb(51, 112, 255);
+            background-color: rgb(240, 244, 255);
+        }
+
         img {
             vertical-align: middle;
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
+            width: 18px;
+            height: 18px;
+            // border-radius: 4px;
             margin-right: 12px;
         }
     }

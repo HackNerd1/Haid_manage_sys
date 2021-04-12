@@ -1,10 +1,10 @@
 <template>
     <el-tabs class="container" v-model="activeName" @tab-click="handleCilck">
         <el-tab-pane label="成员" name="department">
-            <department></department>
+            <user></user>
         </el-tab-pane>
         <el-tab-pane label="部门" name="user">
-            <user></user>
+            <department></department>
         </el-tab-pane>
     </el-tabs>
 </template>

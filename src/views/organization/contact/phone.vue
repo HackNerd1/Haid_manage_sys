@@ -8,7 +8,7 @@
 -->
 <template>
     <div class="visiable tms-content">
-        <div class="visiable explain">说明：可设置用户查看他人手机号码的权限，修改用户间互看号码受限或不受限的各类规则。</div>
+        <div class="tms-text explain">说明：可设置用户查看他人手机号码的权限，修改用户间互看号码受限或不受限的各类规则。</div>
         <riadoGroup :items="items" @on-select="handleSelect"></riadoGroup>
         <div class="visiable visiable-annotation">
             设置结果：<br />

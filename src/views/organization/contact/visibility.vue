@@ -8,8 +8,8 @@
 -->
 <template>
     <div class="visiable tms-content">
-        <div class="visiable label">通讯录权限设置</div>
-        <div class="visiable explain">说明: 可灵活设置企业组织架构的可见性，选择成员可见所有人、可见本部门、不可见任何人等</div>
+        <div class="tms-text label">通讯录权限设置</div>
+        <div class="tms-text explain">说明: 可灵活设置企业组织架构的可见性，选择成员可见所有人、可见本部门、不可见任何人等</div>
         <radioGroup :items="items" :disabled="isEdit" @on-select="handleSelect"></radioGroup>
         <div class="visiable-flexbox">
             <div class="visiable-content-header">以下部门和成员例外</div>
