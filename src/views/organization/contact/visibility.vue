@@ -15,12 +15,20 @@
             <div class="visiable-content-header">以下部门和成员例外</div>
             <div class="g-flexbox"></div>
             <span v-if="isEdit">
-                <el-button @click="handleCancel">取消</el-button>
-                <el-button type="primary">保存</el-button>
+                <el-button size="mini" @click="handleCancel">取消</el-button>
+                <el-button size="mini" type="primary">保存</el-button>
             </span>
-            <el-button v-else @click="handleEdit">编辑</el-button>
+            <el-button size="mini" v-else @click="handleEdit">编辑</el-button>
         </div>
         <el-table :data="tableData" class="table" ref="multipleTable" header-cell-class-name="table-header">
+            <template slot="empty">
+                <avue-empty
+                    image="https://sf1-scmcdn-tos.pstatp.com/goofy/ee/suite/admin/static/imgs/no-data@33a3344ae.svg"
+                    desc="暂无数据"
+                >
+                    <br />
+                </avue-empty>
+            </template>
             <el-table-column prop="name" label="部门或成员"></el-table-column>
             <el-table-column label="可见范围">
                 <template slot-scope="scope">￥{{ scope.row.money }}</template>
@@ -89,4 +97,7 @@ export default {
 </script>
 <style  lang="scss" scoped>
 @import '@/assets/scss/organization/contact/index.scss';
+.avue-empty {
+    margin-top: 20px;
+}
 </style>

@@ -1,13 +1,13 @@
 <template>
     <div class="tms-tree-menu">
         <template v-for="(item, index) in data">
-            <div :key="index" class="tms-space-between tree-menu-item" @click="addClass(index)" :class="{ activated: index == current }">
+            <div :key="index" class="tms-space-between tms-tree-item" @click="addClass(index)" :class="{ activated: index == current }">
                 <div class="tms-tree-item label">
-                    <img :src="item.avatarUrl" alt="头像" />
-                    {{ item.name }}
+                    <div class="tms-tree-item avatar"><img :src="item.avatarUrl" alt="头像" /></div>
+                    <div>{{ item.name }}</div>
                 </div>
                 <div>
-                    <el-dropdown>
+                    <el-dropdown szie="mini">
                         <i class="el-icon-more"></i>
                         <el-dropdown-menu slot="dropdown">
                             <el-dropdown-item>添加子部门</el-dropdown-item>
@@ -19,16 +19,15 @@
             <template v-for="(child, childidx) in item.children">
                 <div
                     :key="'child' + childidx"
-                    class="tms-space-between tree-menu-item children"
+                    class="tms-space-between tms-tree-item children"
                     @click="addClass('child' + childidx)"
                     :class="{ activated: 'child' + childidx == current }"
                 >
                     <div class="tms-tree-item label">
-                        <i :class="child.icon"></i>
-                        {{ child.name }}
+                        <div><i :class="child.icon"></i>{{ child.name }}</div>
                     </div>
                     <div>
-                        <el-dropdown>
+                        <el-dropdown szie="mini">
                             <i class="el-icon-more"></i>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item>编辑部门</el-dropdown-item>

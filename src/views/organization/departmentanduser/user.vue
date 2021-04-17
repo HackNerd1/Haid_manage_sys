@@ -15,10 +15,13 @@
                     <el-button size="mini" icon="el-icon-user">管理部门</el-button>
                 </div>
             </div>
-            <div class="department-main">
-                <button class="department-collapse-btn" :class="{ collapse: collapsed }" @click="onCollapse">
-                    <i class="el-icon-s-fold"></i>
-                </button>
+            <div class="department-main" :class="{ collapse: collapsed }">
+                <el-tooltip placement="top">
+                    <div slot="content">{{ collapsed ? '展开' : '收起' }}</div>
+                    <button class="department-collapse-btn" :class="{ collapse: collapsed }" @click="onCollapse">
+                        <i class="el-icon-s-fold"></i>
+                    </button>
+                </el-tooltip>
                 <div class="department-table-header tms-space-between">
                     <div>
                         {{ departmentName }}
