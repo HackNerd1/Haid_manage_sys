@@ -8,19 +8,74 @@
                 <el-button size="mini">批量编辑部门</el-button>
             </div>
         </div>
+        <avue-crud
+            class="tms-table"
+            :option="tableOption"
+            :data="tableData"
+            @selection-change="onSelect"
+            @on-load="fetchPage"
+            :table-loading="loading"
+        >
+            <template slot="empty">
+                <avue-empty
+                    image="https://sf1-scmcdn-tos.pstatp.com/goofy/ee/suite/admin/static/imgs/no-data@33a3344ae.svg"
+                    desc="暂无数据"
+                >
+                    <br />
+                </avue-empty>
+            </template>
+            <template slot="groupOwner" slot-scope="{ row }">
+                <div class="avatar" v-if="row.avatar && row.avatar != ''"><img :src="row.avatar" alt="" /></div>
+                <span style="margin: 0px 0px 0px 25px">{{ row.groupOwner }} </span>
+            </template>
+        </avue-crud>
     </div>
 </template>
 
 <script>
+import { departmentOption } from '@/const/organization/departmentanduser/index.js';
 export default {
     name: 'departmentanduser-department',
     data() {
         return {
-            search: ''
+            search: '',
+            tableOption: departmentOption,
+            tableData: [],
+            loading: false,
+            selectedItem: []
         };
     },
     created() {},
-    methods: {}
+    methods: {
+        fetchPage(params) {
+            this.tableData = [
+                {
+                    id: 1,
+                    name: 'hhhhh1',
+                    number: '12',
+                    head: 'hhhhh1',
+                    groupName: 'groupName',
+                    groupOwner: 'groupOwner',
+                    avatar:
+                        'https://s3-fs.pstatp.com/static-resource/v1/e7c24442-9851-4515-8857-ecc708c911cg~?image_size=72x72&cut_type=default-face&quality=&format=png&sticker_format=.webp',
+                    children: [
+                        {
+                            id: 2,
+                            name: 'children1',
+                            number: '12',
+                            head: 'children',
+                            groupName: 'groupName',
+                            groupOwner: '-',
+                            avatar: ''
+                        }
+                    ]
+                }
+            ];
+        },
+        onSelect(row) {
+            this.selectedItem = row;
+        }
+    }
 };
 </script>
 

@@ -1,7 +1,12 @@
 <template>
     <div class="tms-tree-menu">
         <template v-for="(item, index) in data">
-            <div :key="index" class="tms-space-between tms-tree-item" @click="addClass(index)" :class="{ activated: index == current }">
+            <div
+                :key="index"
+                class="tms-space-between tms-tree-item"
+                @click="handleClick(index, item.id)"
+                :class="{ activated: index == current }"
+            >
                 <div class="tms-tree-item label">
                     <div class="tms-tree-item avatar"><img :src="item.avatarUrl" alt="头像" /></div>
                     <div>{{ item.name }}</div>
@@ -20,7 +25,7 @@
                 <div
                     :key="'child' + childidx"
                     class="tms-space-between tms-tree-item children"
-                    @click="addClass('child' + childidx)"
+                    @click="handleClick('child' + childidx, child.id)"
                     :class="{ activated: 'child' + childidx == current }"
                 >
                     <div class="tms-tree-item label">
@@ -57,8 +62,9 @@ export default {
         };
     },
     methods: {
-        addClass(index) {
+        handleClick(index, id) {
             this.current = index;
+            this.$emit('on-click', id);
         }
     }
 };

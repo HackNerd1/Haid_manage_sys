@@ -10,7 +10,32 @@
     <div>
         <el-row :gutter="20">
             <el-col :span="8">
-                <el-card shadow="hover" class="mgb20" style="height: 252px">
+                <el-card shadow="hover" class="tms-content" style="height: 252px">
+                    <div class="tms-space-between">
+                        <div class="tms-text label">企业信息</div>
+                        <div>
+                            <el-button type="text" size="mini"
+                                >查看更多
+                                <i class="el-icon-d-arrow-right"></i>
+                            </el-button>
+                        </div>
+                    </div>
+
+                    <div style="display: flex">
+                        <div class="tms-enterprise-infor avatar">
+                            <img :src="enterpriseInfor.avatar" alt="" />
+                        </div>
+                        <div class="tms-enterprise-infor info">
+                            <div>
+                                {{ enterpriseInfor.name }}
+                                <el-button size="mini" @click="routerPush">申请认证</el-button>
+                            </div>
+                            <div>企业编号: {{ enterpriseInfor.id }}</div>
+                            <div>企业域名: {{ enterpriseInfor.domain }}</div>
+                        </div>
+                    </div>
+                </el-card>
+                <!-- <el-card shadow="hover" class="mgb20" style="height: 252px">
                     <div class="user-info">
                         <img src="@/assets/img/img.jpg" class="user-avator" alt />
                         <div class="user-info-cont">
@@ -26,68 +51,37 @@
                         上次登录地点：
                         <span>东莞</span>
                     </div>
-                </el-card>
-                <el-card shadow="hover" style="height: 252px">
+                </el-card> -->
+                <!-- <el-card shadow="hover" style="height: 252px">
                     <div slot="header" class="clearfix">
                         <span>语言详情</span>
                     </div>
                     Vue <el-progress :percentage="71.3" color="#42b983"></el-progress>JavaScript
                     <el-progress :percentage="24.1" color="#f1e05a"></el-progress>CSS <el-progress :percentage="13.7"></el-progress>HTML
                     <el-progress :percentage="5.9" color="#f56c6c"></el-progress>
-                </el-card>
+                </el-card> -->
             </el-col>
             <el-col :span="16">
-                <el-card shadow="hover" class="tms-content" style="height: 180px">
-                    <div class="tms-text label">企业信息</div>
-                    <div style="display: flex">
-                        <div class="tms-enterprise-infor avatar">
-                            <img :src="enterpriseInfor.avatar" alt="" />
-                        </div>
-                        <div class="tms-enterprise-infor info">
-                            <div>
-                                {{ enterpriseInfor.name }}
-                                <el-button size="mini" @click="routerPush">申请认证</el-button>
-                            </div>
-                            <div>企业编号: {{ enterpriseInfor.id }}</div>
-                            <div>企业域名: {{ enterpriseInfor.domain }}</div>
-                        </div>
-                    </div>
-                </el-card>
                 <el-row :gutter="20" class="mgb20;">
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{ padding: '0px' }">
-                            <div class="grid-content grid-con-1">
-                                <i class="el-icon-lx-people grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">1234</div>
-                                    <div>用户访问量</div>
-                                </div>
+                    <el-card shadow="hover" class="tms-content" style="height: 252px">
+                        <div class="tms-space-between">
+                            <div class="tms-text label">成员与部门</div>
+                            <div>
+                                <el-button type="text" size="mini"
+                                    >查看更多
+                                    <i class="el-icon-d-arrow-right"></i>
+                                </el-button>
                             </div>
-                        </el-card>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{ padding: '0px' }">
-                            <div class="grid-content grid-con-2">
-                                <i class="el-icon-lx-notice grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">321</div>
-                                    <div>系统消息</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{ padding: '0px' }">
-                            <div class="grid-content grid-con-3">
-                                <i class="el-icon-lx-goods grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">5000</div>
-                                    <div>数量</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
+                        </div>
+                        <div class="department-info info">
+                            <div>总人数: {{ departmentInfo.total }}&nbsp;人</div>
+                            <div>激活人数: {{ departmentInfo.activated }}&nbsp;人</div>
+                            <div>未使用人数: {{ departmentInfo.unused }}&nbsp;人</div>
+                            <div>部门数: {{ departmentInfo.dept }}&nbsp;人</div>
+                        </div>
+                    </el-card>
                 </el-row>
+
                 <!-- <el-card shadow="hover" style="height:403px;">
                     <div slot="header" class="clearfix">
                         <span>待办事项</span>
@@ -117,8 +111,41 @@
                 </el-card> -->
             </el-col>
         </el-row>
-        <el-row :gutter="20">
-            <el-col :span="12">
+        <el-row :gutter="14">
+            <el-col :span="8">
+                <el-card shadow="hover" :body-style="{ padding: '0px' }">
+                    <div class="grid-content grid-con-1">
+                        <i class="el-icon-lx-people grid-con-icon"></i>
+                        <div class="grid-cont-right">
+                            <div class="grid-num">1234</div>
+                            <div>用户访问量</div>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+            <el-col :span="8">
+                <el-card shadow="hover" :body-style="{ padding: '0px' }">
+                    <div class="grid-content grid-con-2">
+                        <i class="el-icon-lx-notice grid-con-icon"></i>
+                        <div class="grid-cont-right">
+                            <div class="grid-num">321</div>
+                            <div>系统消息</div>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+            <el-col :span="8">
+                <el-card shadow="hover" :body-style="{ padding: '0px' }">
+                    <div class="grid-content grid-con-3">
+                        <i class="el-icon-lx-goods grid-con-icon"></i>
+                        <div class="grid-cont-right">
+                            <div class="grid-num">5000</div>
+                            <div>数量</div>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+            <!-- <el-col :span="12">
                 <el-card shadow="hover">
                     <schart ref="bar" class="schart" canvasId="bar" :options="options"></schart>
                 </el-card>
@@ -127,7 +154,7 @@
                 <el-card shadow="hover">
                     <schart ref="line" class="schart" canvasId="line" :options="options2"></schart>
                 </el-card>
-            </el-col>
+            </el-col> -->
         </el-row>
     </div>
 </template>
@@ -146,6 +173,12 @@ export default {
                 domain: '',
                 id: 'TMS271351668',
                 name: 'TMS'
+            },
+            departmentInfo: {
+                total: 1,
+                activated: 1,
+                unused: 0,
+                dept: 1
             },
             todoList: [
                 {
@@ -304,6 +337,14 @@ export default {
 .tms-text {
     margin-bottom: 20px;
 }
+.department-info {
+    font-size: 13px;
+    &.info {
+        div:not(:nth-child(1)) {
+            margin-top: 10px;
+        }
+    }
+}
 .tms-enterprise-infor {
     &.avatar {
         height: 49px;
@@ -316,9 +357,11 @@ export default {
     }
 
     &.info {
+        font-size: 13px;
         margin-left: 20px;
 
         button {
+            margin-left: 10px;
             padding: 4px 10px;
             font-size: 10px;
         }

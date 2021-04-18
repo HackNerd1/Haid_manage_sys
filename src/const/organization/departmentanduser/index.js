@@ -1,58 +1,96 @@
 export const option = {
-    addBtn: false,
-    selection: true,
-    tip: false,
-    menu: false,
-    refreshBtn: false,
-    column:[
-        {
-         label:'姓名',
-         prop:'name',
-         fixed:true,
-       }, {
-         label: "手机",
-         prop:'phone',
-         hide:true
-       }, {
-         label:'部门',
-         prop:'department'
-       }, {
-        label:'英文名',
-        prop:'enName'
-      }, {
-        label:'帐号状态',
-        prop:'accountStatus'
-      }, {
-        label:'工号',
-        prop:'workNumber'
-      }, {
-        label:'性别',
-        prop:'sex'
-      }, {
-        label:'邮箱',
-        prop:'email'
-      }, {
-        label:'地区',
-        prop:'area'
-      }, {
-        label:'城市',
-        prop:'city'
-      }, {
-        label:'直属上级',
-        prop:'directSuperiors'
-      }, {
-        label:'人员类型',
-        prop:'personType'
-      }, {
-        label:'用户ID',
-        prop:'userId'
-      }, {
-        label:'入职时间',
-        prop:'sex',
-        prop: "ontheJobTime",
-        type: "date",
-        format: "yyyy-MM-dd hh:mm:ss",
-        valueFormat: "yyyy-MM-dd hh:mm:ss",
-      }
-     ]
+  addBtn: false,
+  selection: true,
+  tip: false,
+  menu: false,
+  refreshBtn: false,
+  column: [{
+    label: '姓名',
+    prop: 'name',
+    fixed: true,
+    slot: true
+  }, {
+    label: "手机",
+    prop: 'phone',
+    slot: true
+    //  hide:true
+  }, {
+    label: '部门',
+    prop: 'department'
+  }, {
+    label: '英文名',
+    prop: 'enName'
+  }, {
+    label: '帐号状态',
+    prop: 'accountStatus',
+    hide: true
+  }, {
+    label: '工号',
+    prop: 'workNumber',
+    hide: true
+  }, {
+    label: '性别',
+    prop: 'sex',
+    hide: true
+  }, {
+    label: '邮箱',
+    prop: 'email',
+    hide: true
+  }, {
+    label: '地区',
+    prop: 'area',
+    hide: true
+  }, {
+    label: '城市',
+    prop: 'city',
+    hide: true
+  }, {
+    label: '直属上级',
+    prop: 'directSuperiors',
+    hide: true
+  }, {
+    label: '人员类型',
+    prop: 'personType',
+    hide: true
+  }, {
+    label: '用户ID',
+    prop: 'userId',
+    hide: true
+  }, {
+    label: '入职时间',
+    prop: "ontheJobTime",
+    type: "date",
+    format: "yyyy-MM-dd",
+    valueFormat: "yyyy-MM-dd",
+  }, {
+    label: '工位',
+    prop: 'station'
+  }]
+}
+
+export const departmentOption = {
+  addBtn: false,
+  selection: true,
+  tip: false,
+  menu: false,
+  refreshBtn: false,
+  columnBtn: false,
+  defaultExpandAll: true,
+  column: [{
+    label: '部门名称',
+    prop: 'name',
+  }, {
+    label: '部门人数',
+    prop: 'number',
+  }, {
+    label: '部门负责人',
+    prop: 'head',
+  }, {
+    label: '部门群名称',
+    prop: 'groupName',
+  }, {
+    label: '部门群群主',
+    prop: 'groupOwner',
+    slot: true
+  }]
 }
