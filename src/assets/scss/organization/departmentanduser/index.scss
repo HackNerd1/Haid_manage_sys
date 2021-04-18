@@ -25,10 +25,10 @@
     }
 
     .department-aside {
-        transition-delay: 0.3s;
         padding: 0 16px 0 16px;
         height: 100%;
         min-width: 200px;
+        margin-right: 5px;
 
         .department-aside-buttons {
             display: flex;
@@ -41,6 +41,10 @@
         width: 100%;
         overflow: auto;
         padding: 4px 10px 0px 35px;
+
+        &.collapse {
+            border-left: 0;
+        }
 
         .department-table-header {
             color: #8f959e;

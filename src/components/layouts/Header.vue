@@ -6,7 +6,7 @@
                 <i v-if="!collapse" class="el-icon-s-fold"></i>
                 <i v-else class="el-icon-s-unfold"></i>
             </div>
-            <span>TMS后台管理系统</span>
+            <span>H_Aid</span>
         </div>
         <div class="header-right">
             <div class="header-user-con">
@@ -140,13 +140,11 @@ export default {
     float: left;
     padding: 0 20px;
     cursor: pointer;
-    line-height: 60px;
 }
 .header .logo {
     float: left;
     width: 250px;
-    line-height: 60px;
-
+    line-height: 48px;
     span {
         font-size: 13px;
         font-weight: 600;

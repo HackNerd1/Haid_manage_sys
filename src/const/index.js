@@ -42,16 +42,6 @@ export const menu = [
                 title: '基本表单'
             }
         ]
-    },
-    {
-        icon: 'el-icon-lx-warn',
-        index: '7',
-        title: '错误处理',
-        subs: [
-            {
-                index: '404',
-                title: '404页面'
-            }
-        ]
-    },
+    }
 ]
+

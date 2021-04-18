@@ -1,0 +1,59 @@
+.certificate-content {
+    padding: 5% 25%;
+
+    .certificate-form-header {
+        position: relative;
+        height: 16px;
+        line-height: 16px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #18263c;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: -20px;
+            border-left: 4px solid #3370ff;
+            height: 16px;
+        }
+    }
+
+    .el-steps--horizontal {
+        margin-top: 16px;
+    }
+
+    .certificate-form-title {
+        font-size: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: #18263c;
+        font-weight: 400;
+    }
+
+    .certificate-form-upload-container {
+        padding: 12px;
+        background: #fafafc;
+        display: flex;
+    }
+
+    .certificate-form-submit-box {
+        margin-top: 50px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        align-items: center;
+
+        a,
+        a:hover {
+            color: #3370ff;
+        }
+
+        .el-radio {
+            margin: 0;
+        }
+    }
+}

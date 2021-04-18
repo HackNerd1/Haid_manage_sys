@@ -60,6 +60,18 @@ export default new Router({
             ]
         },
         {
+            path: '/certificate',
+            redirect: '/certificate/enterprise',
+            component: ()=> import('@/App.vue'),
+            children: [
+                {
+                    path: 'enterprise',
+                    component: () => import(/**/'@/views/certificate/enterprise/index.vue'),
+                    meta: { title: '企业认证' }
+                }
+            ]
+        },
+        {
             path: '/login',
             component: () => import(/* webpackChunkName: "login" */ '@/pages/Login.vue'),
             meta: { title: '登录' }

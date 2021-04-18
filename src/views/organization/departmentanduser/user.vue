@@ -9,16 +9,19 @@
                     prefix-icon="el-icon-search"
                     placeholder="搜索成员和部门"
                 ></el-input>
-                <tree-menu :data="menuData"></tree-menu>
+                <tree-menu @on-click="handleSwitch" :data="menuData"></tree-menu>
                 <div class="department-aside-buttons">
                     <el-button size="mini" icon="el-icon-plus">新建部门</el-button>
                     <el-button size="mini" icon="el-icon-user">管理部门</el-button>
                 </div>
             </div>
-            <div class="department-main">
-                <button class="department-collapse-btn" :class="{ collapse: collapsed }" @click="onCollapse">
-                    <i class="el-icon-s-fold"></i>
-                </button>
+            <div class="department-main" :class="{ collapse: collapsed }">
+                <el-tooltip placement="top">
+                    <div slot="content">{{ collapsed ? '展开' : '收起' }}</div>
+                    <button class="department-collapse-btn" :class="{ collapse: collapsed }" @click="onCollapse">
+                        <i class="el-icon-s-fold"></i>
+                    </button>
+                </el-tooltip>
                 <div class="department-table-header tms-space-between">
                     <div>
                         {{ departmentName }}
@@ -58,7 +61,23 @@
                     @selection-change="onSelect"
                     @on-load="fetchPage"
                     :table-loading="loading"
-                ></avue-crud>
+                >
+                    <template slot="empty">
+                        <avue-empty
+                            image="https://sf1-scmcdn-tos.pstatp.com/goofy/ee/suite/admin/static/imgs/no-data@33a3344ae.svg"
+                            desc="暂无数据"
+                        >
+                            <br />
+                        </avue-empty>
+                    </template>
+                    <template slot="name" slot-scope="{ row }">
+                        <div class="avatar"><img :src="row.avatar" alt="" /></div>
+                        <span style="margin: 0px 0px 0px 25px">{{ row.name }} </span>
+                    </template>
+                    <template slot="phone" slot-scope="{ row }">
+                        {{ `+${countryCode(row.country.slice(0, 1), row.shKey).codeKey} ${row.phone}` }}
+                    </template>
+                </avue-crud>
                 <div class="department-table-footer tms-space-between">
                     <div class="department-footer-descrip">
                         <el-switch v-model="switchVal"></el-switch>
@@ -76,6 +95,7 @@
 <script>
 import { option } from '@/const/organization/departmentanduser/index.js';
 import treeMenu from '@/components/common/treeMenu/index.vue';
+import { countryCode } from '@/utils/utils.js';
 export default {
     name: 'departmentanduser-user',
     components: { treeMenu },
@@ -104,6 +124,7 @@ export default {
                 }
             ],
             collapsed: false,
+            countryCode: countryCode,
             departmentName: 'departmentName',
             tableOption: option,
             tableData: [],
@@ -118,29 +139,54 @@ export default {
     created() {
         this.menuData = [
             {
+                id: 1,
                 name: 'test1',
                 avatarUrl:
                     'https://s3-fs.pstatp.com/static-resource/v1/e7c24442-9851-4515-8857-ecc708c911cg~?image_size=72x72&cut_type=default-face&quality=&format=png&sticker_format=.webp',
                 children: [
                     {
+                        id: 2,
                         name: 'children',
                         icon: 'el-icon-user'
                     }
                 ]
             },
             {
+                id: 3,
                 name: 'test2',
                 avatarUrl: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
             }
         ];
     },
     methods: {
-        fetchPage() {
-            this.tableData = [
-                {
-                    name: 'test'
-                }
-            ];
+        fetchPage(id) {
+            this.loading = true;
+            switch (id) {
+                case 2:
+                    this.loading = true;
+                    break;
+                case 3:
+                    this.tableData = [];
+                    this.loading = false;
+                    break;
+                default:
+                    this.loading = false;
+                    this.tableData = [
+                        {
+                            name: 'test',
+                            avatar:
+                                'https://s3-fs.pstatp.com/static-resource/v1/e7c24442-9851-4515-8857-ecc708c911cg~?image_size=72x72&cut_type=default-face&quality=&format=png&sticker_format=.webp',
+                            phone: '12345678901',
+                            country: 'China',
+                            shKey: 'CN',
+                            department: '-',
+                            enName: '-',
+                            ontheJobTime: new Date(),
+                            station: '-'
+                        }
+                    ];
+                    break;
+            }
         },
         onCollapse() {
             this.collapsed = !this.collapsed;
@@ -155,6 +201,9 @@ export default {
         },
         onSelect(row) {
             this.selectedItem = row;
+        },
+        handleSwitch(id) {
+            this.fetchPage(id);
         }
     }
 };
