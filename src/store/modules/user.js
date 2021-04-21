@@ -7,14 +7,14 @@
  * @LastEditTime: 2021-01-30 15:29:00
  */
 const user = {
-    state : {
-        userProfile : {
+    state: {
+        userProfile: {
             id: '',
             userName: '',
 
         },
-        access_token : '',
-        
+        access_token: '',
+
     },
     getters: {
         access_token: state => state.userProfile,
@@ -28,3 +28,5 @@ const user = {
         }
     }
 }
+
+export default user

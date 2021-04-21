@@ -12,15 +12,17 @@ import createPersistedState from "vuex-persistedstate";
 
 // modules
 import user from "@/store/modules/user"
+import organization from "@/store/modules/organization/index.js"
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
     /**
      * 用法 store.state.a // -> moduleA 的状态
      * store.state.b // -> moduleB 的状态
-    */
+     */
     modules: {
-        user
+        user,
+        organization
     },
     plugins: [
         createPersistedState() //将 state 数据持久化, 防止刷新后数据丢失 ， 解决多次请求登录接口
@@ -28,4 +30,3 @@ const store = new Vuex.Store({
 });
 
 export default store
-

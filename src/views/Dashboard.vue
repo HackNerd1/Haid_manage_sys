@@ -74,10 +74,10 @@
                             </div>
                         </div>
                         <div class="department-info info">
-                            <div>总人数: {{ departmentInfo.total }}&nbsp;人</div>
-                            <div>激活人数: {{ departmentInfo.activated }}&nbsp;人</div>
-                            <div>未使用人数: {{ departmentInfo.unused }}&nbsp;人</div>
-                            <div>部门数: {{ departmentInfo.dept }}&nbsp;人</div>
+                            <div>总人数: {{ dept_users.total }}&nbsp;人</div>
+                            <div>激活人数: {{ dept_users.activated }}&nbsp;人</div>
+                            <div>未使用人数: {{ dept_users.unused }}&nbsp;人</div>
+                            <div>部门数: {{ dept_recods.total }}&nbsp;人</div>
                         </div>
                     </el-card>
                 </el-row>
@@ -160,6 +160,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Schart from 'vue-schart';
 import bus from '@/components/common/bus';
 export default {
@@ -173,12 +174,6 @@ export default {
                 domain: '',
                 id: 'TMS271351668',
                 name: 'TMS'
-            },
-            departmentInfo: {
-                total: 1,
-                activated: 1,
-                unused: 0,
-                dept: 1
             },
             todoList: [
                 {
@@ -285,6 +280,7 @@ export default {
         Schart
     },
     computed: {
+        ...mapGetters(['dept_users', 'dept_recods']),
         role() {
             return this.name === 'admin' ? '超级管理员' : '普通用户';
         }

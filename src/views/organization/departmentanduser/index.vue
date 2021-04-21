@@ -1,9 +1,9 @@
 <template>
     <el-tabs class="container" v-model="activeName" @tab-click="handleCilck">
-        <el-tab-pane label="成员" name="department">
-            <user></user>
+        <el-tab-pane label="成员" name="user">
+            <user @change-tab="onChangeTab"></user>
         </el-tab-pane>
-        <el-tab-pane label="部门" name="user">
+        <el-tab-pane label="部门" name="department">
             <department></department>
         </el-tab-pane>
     </el-tabs>
@@ -17,11 +17,14 @@ export default {
     components: { department, user },
     data() {
         return {
-            activeName: 'department'
+            activeName: 'user'
         };
     },
     methods: {
-        handleCilck(tab, event) {}
+        handleCilck(tab, event) {},
+        onChangeTab(tab) {
+            this.activeName = tab;
+        }
     }
 };
 </script>

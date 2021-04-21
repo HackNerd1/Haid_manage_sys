@@ -25,7 +25,7 @@
                 </avue-empty>
             </template>
             <template slot="groupOwner" slot-scope="{ row }">
-                <div class="avatar" v-if="row.avatar && row.avatar != ''"><img :src="row.avatar" alt="" /></div>
+                <div class="avatar" v-if="row.avatarUrl && row.avatarUrl != ''"><img :src="row.avatarUrl" alt="" /></div>
                 <span style="margin: 0px 0px 0px 25px">{{ row.groupOwner }} </span>
             </template>
         </avue-crud>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
 import { departmentOption } from '@/const/organization/departmentanduser/index.js';
 export default {
     name: 'departmentanduser-department',
@@ -46,31 +47,16 @@ export default {
         };
     },
     created() {},
+    computed: {
+        ...mapGetters(['dept_recods'])
+    },
     methods: {
         fetchPage(params) {
-            this.tableData = [
-                {
-                    id: 1,
-                    name: 'hhhhh1',
-                    number: '12',
-                    head: 'hhhhh1',
-                    groupName: 'groupName',
-                    groupOwner: 'groupOwner',
-                    avatar:
-                        'https://s3-fs.pstatp.com/static-resource/v1/e7c24442-9851-4515-8857-ecc708c911cg~?image_size=72x72&cut_type=default-face&quality=&format=png&sticker_format=.webp',
-                    children: [
-                        {
-                            id: 2,
-                            name: 'children1',
-                            number: '12',
-                            head: 'children',
-                            groupName: 'groupName',
-                            groupOwner: '-',
-                            avatar: ''
-                        }
-                    ]
-                }
-            ];
+            this.loading = true;
+            setTimeout(() => {
+                this.tableData = this.dept_recods.records;
+                this.loading = false;
+            }, 500);
         },
         onSelect(row) {
             this.selectedItem = row;

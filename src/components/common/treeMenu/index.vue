@@ -4,7 +4,7 @@
             <div
                 :key="index"
                 class="tms-space-between tms-tree-item"
-                @click="handleClick(index, item.id)"
+                @click="handleClick(index, item)"
                 :class="{ activated: index == current }"
             >
                 <div class="tms-tree-item label">
@@ -25,7 +25,7 @@
                 <div
                     :key="'child' + childidx"
                     class="tms-space-between tms-tree-item children"
-                    @click="handleClick('child' + childidx, child.id)"
+                    @click="handleClick('child' + childidx, child)"
                     :class="{ activated: 'child' + childidx == current }"
                 >
                     <div class="tms-tree-item label">
@@ -62,9 +62,9 @@ export default {
         };
     },
     methods: {
-        handleClick(index, id) {
+        handleClick(index, row) {
             this.current = index;
-            this.$emit('on-click', id);
+            this.$emit('on-click', row);
         }
     }
 };

@@ -85,8 +85,8 @@
                     已阅读并同意<a href="#">《TMS认证证审核标准》</a>和<a href="#">《TMS认证服务协议》</a>
                 </div>
                 <div>
-                    <el-button>取消</el-button>
-                    <el-button @click="onSubmit" type="primary" :disabled="!isConfirmed">保存</el-button>
+                    <el-button size="mini">取消</el-button>
+                    <el-button @click="onSubmit" type="primary" :disabled="!isConfirmed" size="mini">保存</el-button>
                 </div>
             </div>
         </el-form>
@@ -126,7 +126,6 @@ export default {
         onSubmit(v1, v2, v3) {
             this.$refs.form.validate((result) => {
                 if (result) {
-                    // TODO 添加接口
                     this.$notify({
                         title: '成功',
                         message: '表单提交成功',
