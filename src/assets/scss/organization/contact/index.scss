@@ -1,0 +1,44 @@
+.visiable {
+    // &.label {
+    //     position: relative;
+    //     height: 16px;
+    //     line-height: 16px;
+    //     font-size: 16px;
+    //     font-weight: 500;
+    //     color: #18263c;
+
+    //     &::before {
+    //         content: '';
+    //         position: absolute;
+    //         top: 0;
+    //         bottom: 0;
+    //         margin: auto;
+    //         left: -20px;
+    //         border-left: 4px solid #3370ff;
+    //         height: 16px;
+    //     }
+    // }
+
+    // &.explain {
+    //     font-size: 14px;
+    //     font-weight: 400;
+    //     color: #646a73;
+    //     margin-top: 4px;
+    // }
+
+    .visiable-flexbox {
+        display: flex;
+        margin-bottom: 10px;
+
+        &.g-flexbox,
+        .visiable-content-header {
+            flex: 1;
+        }
+    }
+
+    .visiable-annotation {
+        color: #8691a3;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}

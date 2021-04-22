@@ -4,7 +4,7 @@
  * @Author: Hansel
  * @Date: 2021-01-23 19:20:22
  * @LastEditors: Hansel
- * @LastEditTime: 2021-01-25 10:03:48
+ * @LastEditTime: 2021-03-01 13:55:08
  */
 import Vue from 'vue';
 import Router from 'vue-router';
@@ -28,6 +28,16 @@ export default new Router({
                     meta: { title: '系统首页' }
                 },
                 {
+                    path: '/departmentanduser',
+                    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/organization/departmentanduser/index.vue'),
+                    meta: { title: '成员与部门' }
+                },
+                {
+                    path: '/contact',
+                    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/organization/contact/index.vue'),
+                    meta: { title: '通讯录设置' }
+                },
+                {
                     path: '/table',
                     component: () => import(/* webpackChunkName: "table" */ '@/views/BaseTable.vue'),
                     meta: { title: '基础表格' }
@@ -47,6 +57,18 @@ export default new Router({
                     component: () => import(/* webpackChunkName: "403" */ '@/pages/403.vue'),
                     meta: { title: '403' }
                 },
+            ]
+        },
+        {
+            path: '/certificate',
+            redirect: '/certificate/enterprise',
+            component: ()=> import('@/App.vue'),
+            children: [
+                {
+                    path: 'enterprise',
+                    component: () => import(/**/'@/views/certificate/enterprise/index.vue'),
+                    meta: { title: '企业认证' }
+                }
             ]
         },
         {

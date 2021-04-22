@@ -4,11 +4,11 @@
  * @Author: Hansel
  * @Date: 2021-01-23 19:20:22
  * @LastEditors: Hansel
- * @LastEditTime: 2021-01-25 10:04:19
+ * @LastEditTime: 2021-03-02 11:06:17
 -->
 <template>
     <div>
-        <div class="crumbs">
+        <div class="crumbs ">
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
                     <i class="el-icon-lx-cascades"></i> 基础表格

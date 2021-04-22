@@ -1,0 +1,60 @@
+.tms-tree-menu {
+    margin-top: 10px;
+
+    .tms-tree-item {
+        position: relative;
+        height: 30px;
+        font-size: 12px;
+        line-height: 30px;
+        padding: 0px 8px 0px 8px;
+
+        &.avatar {
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: 50%;
+            transform: translate(-10px, -60%);
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        &.label {
+            display: flex;
+            line-height: 30px;
+            height: 30px;
+
+            div:nth-child(2) {
+                margin-left: 25px;
+            }
+
+            i {
+                margin-right: 10px;
+            }
+
+        }
+
+        &.children {
+            padding-left: 25px;
+        }
+
+        &.activated {
+            color: rgb(51, 112, 255);
+            background-color: rgb(240, 244, 255);
+        }
+
+        &:hover:not(.activated, .label) {
+            background-color: rgb(239, 240, 241);
+        }
+
+        // img {
+        //     // vertical-align: middle;
+
+        //     // border-radius: 4px;
+        //     margin-right: 12px;
+        // }
+    }
+
+}

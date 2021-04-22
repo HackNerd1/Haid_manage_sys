@@ -4,7 +4,7 @@
  * @Author: Hansel
  * @Date: 2021-01-23 19:20:22
  * @LastEditors: Hansel
- * @LastEditTime: 2021-01-23 21:52:42
+ * @LastEditTime: 2021-01-30 15:17:31
 -->
 <template>
     <div class="tags" v-if="showTags">
@@ -138,7 +138,7 @@
 
     .tags-li {
         float: left;
-        margin: 3px 5px 2px 3px;
+        margin: 0px 5px 2px 3px;
         border-radius: 3px;
         font-size: 12px;
         overflow: hidden;
