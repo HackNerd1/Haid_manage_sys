@@ -4,7 +4,7 @@
             <div class="tms-text explain">如何创建部门、批量导入部门及创建部门群？<a href="#">了解详情</a></div>
             <div class="tms-table operate">
                 <el-input size="mini" v-model="search" prefix-icon="el-icon-search" placeholder="搜索部门名称"></el-input>
-                <el-button type="primary" size="mini">新建部门</el-button>
+                <el-button type="primary" size="mini" @click="deptAddVis = true">新建部门</el-button>
                 <el-button size="mini">批量编辑部门</el-button>
             </div>
         </div>
@@ -29,6 +29,14 @@
                 <span style="margin: 0px 0px 0px 25px">{{ row.groupOwner }} </span>
             </template>
         </avue-crud>
+        <el-dialog ref="dialog" :visible.sync="deptAddVis" @close="handleCancel">
+            <div slot="title">新建部门&nbsp;</div>
+            <avue-form :option="tableOption" v-model="deptForm" ref="form"> </avue-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="visible = false" size="mini">取 消</el-button>
+                <el-button type="primary" size="mini" @click="handleSubmit">完 成</el-button>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
@@ -43,7 +51,9 @@ export default {
             tableOption: departmentOption,
             tableData: [],
             loading: false,
-            selectedItem: []
+            selectedItem: [],
+            deptAddVis: false,
+            deptForm: {}
         };
     },
     created() {},
@@ -60,6 +70,14 @@ export default {
         },
         onSelect(row) {
             this.selectedItem = row;
+        },
+        handleCancel() {
+            this.deptForm = {};
+            this.deptAddVis = false;
+        },
+        handleSubmit() {
+            this.deptForm = {};
+            this.deptAddVis = false;
         }
     }
 };

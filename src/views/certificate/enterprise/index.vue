@@ -1,6 +1,6 @@
 <template>
     <div class="certificate-content">
-        <div class="certificate-form-header">TMS&nbsp;企业认证</div>
+        <div class="certificate-form-header">H_Aid&nbsp;企业认证</div>
         <el-steps :active="certificateSteps.actived" align-center>
             <template v-for="(item, idx) in certificateSteps.steps">
                 <el-step :key="idx" :title="item.title" :description="item.description"></el-step>

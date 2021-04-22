@@ -121,6 +121,8 @@ export const option = {
 }
 
 export const departmentOption = {
+  submitBtn: false,
+  emptyBtn: false,
   rowKey: 'departmentId',
   addBtn: false,
   selection: true,
@@ -132,18 +134,38 @@ export const departmentOption = {
   column: [{
     label: '部门名称',
     prop: 'name',
+    span: 24,
+    labelPosition: 'top',
+    rules: [{
+      required: true,
+      message: '请输入部门名称',
+      trigger: "blur"
+    }]
   }, {
     label: '部门人数',
     prop: 'number',
+    labelPosition: 'top',
+    span: 24,
   }, {
     label: '部门负责人',
     prop: 'head',
+    labelPosition: 'top',
+    span: 24,
   }, {
     label: '部门群名称',
     prop: 'groupName',
+    labelPosition: 'top',
+    span: 24,
+    rules: [{
+      required: true,
+      message: '请输入部门名称',
+      trigger: "blur"
+    }]
   }, {
     label: '部门群群主',
     prop: 'groupOwner',
+    labelPosition: 'top',
+    span: 24,
     slot: true
   }]
 }

@@ -11,7 +11,7 @@
                 ></el-input>
                 <tree-menu @on-click="handleSwitch" :data="dept_recods.records"></tree-menu>
                 <div class="department-aside-buttons">
-                    <el-button size="mini" icon="el-icon-plus">新建部门</el-button>
+                    <el-button size="mini" icon="el-icon-plus" @click="deptAddVis = true">新建部门</el-button>
                     <el-button size="mini" icon="el-icon-user" @click="onMangeDept">管理部门</el-button>
                 </div>
             </div>
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <el-dialog ref="dialog" title="添加成员" :visible.sync="visible" @close="handleCancel">
+        <el-dialog ref="dialog" :visible.sync="visible" @close="handleCancel">
             <div slot="title">
                 添加成员&nbsp;
                 <el-button icon="el-icon-question" size="mini" type="text"> 功能介绍 </el-button>
@@ -103,12 +103,20 @@
                 <el-button type="primary" size="mini" @click="handleSubmit">完 成</el-button>
             </div>
         </el-dialog>
+        <el-dialog ref="dialog" :visible.sync="deptAddVis" @close="handleCancel">
+            <div slot="title">新建部门&nbsp;</div>
+            <avue-form :option="departmentOption" v-model="deptForm" ref="form" v-loading="dialogLoading"> </avue-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="visible = false" size="mini">取 消</el-button>
+                <el-button type="primary" size="mini" @click="handleCancel">完 成</el-button>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
-import { option, dict } from '@/const/organization/departmentanduser/index.js';
+import { option, dict, departmentOption } from '@/const/organization/departmentanduser/index.js';
 import treeMenu from '@/components/common/treeMenu/index.vue';
 import { countryCode } from '@/utils/utils.js';
 export default {
@@ -126,6 +134,7 @@ export default {
             },
             departmentName: 'test1',
             tableOption: option,
+            departmentOption: departmentOption,
             tableData: [],
             loading: false,
             selectedItem: [],
@@ -134,7 +143,9 @@ export default {
             userCount: 1,
             visible: false,
             form: {},
-            dialogLoading: false
+            deptForm: {},
+            dialogLoading: false,
+            deptAddVis: false
         };
     },
     computed: {
@@ -180,10 +191,15 @@ export default {
         handleAdd() {
             this.visible = true;
         },
+        // handleAddDept() {
+        //     this.deptAddVis = true;
+        // },
         handleCancel() {
             this.form = {};
             this.dialogLoading = false;
             this.visible = false;
+            this.deptAddVis = false;
+            this.deptForm = {};
         },
         handleDelete() {
             let { id } = this.departmentInfor;
