@@ -25,7 +25,7 @@
 
 ## 前言
 
-基于 Vue + Element UI 的后台管理系统解决方案。[线上地址](#)
+基于 Vue + Element UI, 仿照飞书管理后台做的管理系统解决方案。[线上地址](http://haid.wublubdubda.cn/)
 
 ---
 ## 项目截图
@@ -54,9 +54,12 @@ npm run build || cnpm run build || yarn run build
 
 -   [x] 登录/注销
 -   [x] Dashboard
--   [x] Tab 选项卡
 -   [x] 404 / 403
 -   [x] 三级菜单
 -   [x] 国际化
+-   [x] 通讯录设置
+-   [x] 权限切换响应
+-   [x] 表格表单空状态
+-   [x] 树表结构
 
 
